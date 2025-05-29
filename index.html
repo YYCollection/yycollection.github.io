@@ -1,202 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>The YY Collection</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <style>
-    
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<title>The YY Collection</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 1.5rem 1rem 2rem; 
-      color: #222;
-      min-height: 100vh;
-      display: flex;
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 1.5rem 1rem 2rem; 
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  header {
+    background: #ffffff;
+    color: #222;
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    animation: fadeIn 1s ease forwards;
+    user-select: none;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    
+    flex-wrap: wrap;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #111;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 0; 
+  }
+
+  nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap; 
+    justify-content: flex-end;
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .btn {
+    background-color: transparent;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    color: #4a90e2;
+    padding: 0.65rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
+    flex-shrink: 0;
+    touch-action: manipulation;
+    min-width: 80px; 
+    text-align: center;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    background-color: #4a90e2;
+    color: white;
+    outline: none;
+  }
+
+  main {
+    margin-top: 2rem;
+    animation: fadeIn 1s ease 0.3s forwards;
+    opacity: 0;
+    width: 100%;
+    max-width: 900px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: stretch; 
+  }
+
+  .card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: default;
+    word-wrap: break-word; 
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    
+    flex: 1 1 220px;  
+    min-width: 220px;
+    max-width: 100%;
+  }
+
+  .card:hover {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    header {
       flex-direction: column;
       align-items: center;
-      
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    header {
-      background: linear-gradient(135deg, #4a148c, #880e4f);
-      color: white;
-      padding: 1.5rem 1rem;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 900px;
-      box-sizing: border-box;
-      box-shadow: 0 8px 20px rgba(136, 14, 79, 0.4);
-      animation: fadeIn 1s ease forwards;
-      user-select: none;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      
-      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-      letter-spacing: 0.05em;
-      font-weight: 700;
-      white-space: nowrap;
-      flex-shrink: 0;
-      min-width: 0; 
-    }
-
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap; 
-      justify-content: flex-end;
-      flex-grow: 1;
-      min-width: 0;
-    }
-
-    .btn {
-      background-color: rgba(255, 255, 255, 0.2);
-      border: 2px solid white;
-      border-radius: 8px;
-      color: white;
-      padding: 0.65rem 1.5rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
-      flex-shrink: 0;
-      touch-action: manipulation;
-      min-width: 80px; 
+      font-size: 1.75rem;
+      white-space: normal;
       text-align: center;
     }
 
-    .btn:hover,
-    .btn:focus {
-      background-color: white;
-      color: #880e4f;
-      border-color: #880e4f;
-      outline: none;
-    }
-
-    main {
-      margin-top: 2rem;
-      animation: fadeIn 1s ease 0.3s forwards;
-      opacity: 0;
+    nav {
       width: 100%;
-      max-width: 600px;
-      display: flex;
       justify-content: center;
-      padding: 0 1rem; 
-      box-sizing: border-box;
+      gap: 0.75rem;
     }
 
-    .card {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      cursor: default;
-      word-wrap: break-word; 
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .card:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      transform: translateY(-4px);
+    .btn {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 1.05rem;
+      padding: 0.75rem 0;
+      min-width: unset;
     }
 
     h2 {
-      margin-top: 0;
-      color: #4a148c;
-      font-weight: 600;
-      font-size: 1.75rem;
-      line-height: 1.2;
+      font-size: 1.25rem;
     }
 
-    p {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: #444;
-      margin-bottom: 0;
+    main {
+      flex-direction: column;
+      gap: 1.25rem;
     }
 
-    
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-      }
-
-      header h1 {
-        font-size: 2rem;
-        white-space: normal;
-        text-align: center;
-      }
-
-      nav {
-        width: 100%;
-        justify-content: center;
-        gap: 0.75rem;
-      }
-
-      .btn {
-        flex-grow: 1;
-        text-align: center;
-        font-size: 1.05rem;
-        padding: 0.75rem 0;
-        min-width: unset;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-      }
+    .card {
+      flex: none;
+      width: 100%;
+      max-width: 100%;
+      min-width: unset;
     }
-  </style>
+  }
+</style>
 </head>
 <body>
   <header>
     <h1>The YY Collection</h1>
     <nav>
-      <button class="btn" type="button" aria-label="Shop">SHOP</button>
-      <button class="btn" type="button" aria-label="Cart">CART</button>
+      <button class="btn" type="button" aria-label="Shop">Shop</button>
+      <button class="btn" type="button" aria-label="Cart">Cart</button>
     </nav>
   </header>
 
   <main>
-    <div class="card" role="region" aria-label="Test content card">
+    <div class="card" role="region" aria-label="Welcome description">
       <h2>Welcome</h2>
-      <p>Welcome to The YY Collection, where we sell authentic perfumes, made for luxury, and pure satisfaction. </p>
+      <p>Discover The YY Collection — authentic perfumes crafted with care, designed to elevate your style and confidence.</p>
+    </div>
+
+    <div class="card" role="region" aria-label="Our Mission description">
+      <h2>Our Mission</h2>
+      <p>We strive to blend tradition with innovation, delivering timeless fragrances that resonate with your personality.</p>
+    </div>
+
+    <div class="card" role="region" aria-label="Quality Assurance description">
+      <h2>Quality Assurance</h2>
+      <p>Each perfume is carefully tested for purity and longevity, ensuring a premium experience with every spritz.</p>
+    </div>
+
+    <div class="card" role="region" aria-label="Customer Care description">
+      <h2>Customer Care</h2>
+      <p>Our team is dedicated to supporting you — from personalized recommendations to seamless shopping and delivery.</p>
     </div>
   </main>
 </body>
 </html>
-
